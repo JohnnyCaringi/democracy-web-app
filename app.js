@@ -3,7 +3,8 @@ const app = express()
 
 console.log("I'm on a node server");
 
-app.use(express.static('./'))
+// TODO add public folder
+app.use(express.static('./public/'))
 app.get('/', function (req, res) {
   //outdated way
   //res.send('Hello Node From Express on local devbox :))))')

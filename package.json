@@ -1,5 +1,17 @@
 {
   "dependencies": {
-    "express": "^4.19.2"
-  }
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  },
+  "name": "cautious-doodle-dev",
+  "version": "1.0.0",
+  "description": "Fall 2024 dev \"thingy\"",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {}
 }

@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const env = require('dotenv').config()
 
 app.set('view engine', 'ejs')
 console.log("I'm on a node server")
@@ -8,7 +9,7 @@ app.use(express.static('./public/'))
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.uri;
+const uri = process.env.MONGO_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -33,6 +34,14 @@ async function run() {
 }
 run().catch(console.dir);
 
+app.get('/mongo', async(req, res)=>{
+  await client.connect();
+  let result = await client.db("johnny-db").collection("whatever").find({}).toArray();
+  res.render("mongo", {
+    query: result
+  })
+  console.log("Sent result to browser")
+})
 
 app.get('/', function (req, res) {
   //outdated way

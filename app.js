@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const env = require('dotenv').config()
+const bodyParser = require("body-parser")
+const { urlencoded } = require("body-parser")
+const { objectID } = require("mongodb");
 
 app.set('view engine', 'ejs')
 console.log("I'm on a node server")
@@ -63,7 +66,6 @@ app.get('/read', async (req, res)=>{
   await client.connect();
   //Read
   let result = await client.db("johnny-db").collection("whatever").find({}).toArray()
-  console.log(result)
   res.render("read.ejs", {
     mongoResult: result
   })
@@ -73,8 +75,18 @@ app.get('/insert', async (req, res)=>{
   await client.connect();
   //Insert
   await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
-  await client.db("johnny-db").collection("whatever").insertOne({DetroitLionsOnTop: "Future superbowl champs"});
   res.render("insert.ejs")
+})
+
+app.get('/update', async (req, res)=>{
+  let result = await client.db("johnny-db").collection("whatever").find({}).toArray()
+  res.render("update.ejs", {
+    postData: result
+  })
+  await client.connect();
+  //Insert
+  await client.db("johnny-db").collection("whatever").updateOne({post: "hardcoded post insert"}, {$set: {post: "Updated hardcoded post"}});
+  
 })
 
 app.listen(5000)

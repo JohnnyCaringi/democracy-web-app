@@ -1,0 +1,9 @@
+<h1>Mongo Results:</h1>
+<br>
+<a href="/">Back to homepage</a>
+<br>
+<a href="/insert">To insert</a>
+
+<% mongoResult.forEach((value,index)=>{ %>
+    <p><%=value.post%></p>
+<% }) %>

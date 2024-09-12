@@ -2,8 +2,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "mongodb": "^6.8.0",
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
     "nodemon": "^3.1.4"
   },
   "name": "cautious-doodle-dev",

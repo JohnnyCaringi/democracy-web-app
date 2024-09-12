@@ -37,11 +37,13 @@ run().catch(console.dir);
 app.get('/mongo', async(req, res)=>{
   await client.connect();
   let result = await client.db("johnny-db").collection("whatever").find({}).toArray();
-  res.render("mongo", {
+  console.log(result)
+  res.render("mongo.ejs", {
     query: result
   })
   console.log("Sent result to browser")
 })
+
 
 app.get('/', function (req, res) {
   //outdated way
@@ -55,6 +57,24 @@ app.get('/ejs', (req, res)=>{
     res.render("index", {
       myServerVariable: "Something from server"
     })
+})
+
+app.get('/read', async (req, res)=>{
+  await client.connect();
+  //Read
+  let result = await client.db("johnny-db").collection("whatever").find({}).toArray()
+  console.log(result)
+  res.render("read.ejs", {
+    mongoResult: result
+  })
+})
+
+app.get('/insert', async (req, res)=>{
+  await client.connect();
+  //Insert
+  await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
+  await client.db("johnny-db").collection("whatever").insertOne({DetroitLionsOnTop: "Future superbowl champs"});
+  res.render("insert.ejs")
 })
 
 app.listen(5000)

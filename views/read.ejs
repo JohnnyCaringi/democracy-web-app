@@ -5,8 +5,12 @@
 <a href="/insert">To insert</a>
 <br>
 <a href="/update">To update</a>
+<br>
 
-
-<% mongoResult.forEach((value,index)=>{ %>
-    <p><%=value.post%></p>
-<% }) %>
+<% for (var i=0; i< postData.length; i++ ) { %>
+    <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
+      <%= postData[i].post %> 
+      <input type="submit" value="update"> 
+    </form>
+    <br/>
+  <% } %>

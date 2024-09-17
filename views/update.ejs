@@ -1,15 +1,12 @@
 <h1> update something into mongo</h1>
 
-<a href="/read">Go to read</a>
-<br>
-<a href="/insert">Go to insert</a>
+<h3> my blog posts</h3> 
+ <% for (var i=0; i< postData.length; i++ ) { %>
+  <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
+    <%= postData[i].post %> 
+    <input type="submit" value="update"> 
+  </form>
+  <br/>
+<% } %>
 
-<% for (var i=0; i< postData.length; i++){ %>
-    <form method="POST" action="/update/<%= postData[i]._id%>"
-    style="display: inline-block">
-    <%= postData[i].post %>
-    <input type="submit" value="update">
-    </form>
-    <br>
-
-<p>woah the update</p>
+<a href="/read">bak to the read endpont</a>

@@ -1,9 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const env = require('dotenv').config()
-const bodyParser = require("body-parser")
-const { urlencoded } = require("body-parser")
-const { objectID } = require("mongodb");
+const bodyParser = require('body-parser')
+const { urlencoded } = require('body-parser')
+const { ObjectId } = require('mongodb')
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 app.set('view engine', 'ejs')
 console.log("I'm on a node server")
@@ -11,7 +12,6 @@ console.log("I'm on a node server")
 app.use(express.static('./public/'))
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -32,7 +32,7 @@ async function run() {
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+    //await client.close();
   }
 }
 run().catch(console.dir);
@@ -64,11 +64,14 @@ app.get('/ejs', (req, res)=>{
 
 app.get('/read', async (req, res)=>{
   await client.connect();
-  //Read
-  let result = await client.db("johnny-db").collection("whatever").find({}).toArray()
-  res.render("read.ejs", {
-    mongoResult: result
-  })
+  
+  let result = await client.db("johnny-db").collection("whatever")
+    .find({}).toArray(); 
+
+  res.render('read.ejs', {
+    postData : result
+  });
+
 })
 
 app.get('/insert', async (req, res)=>{
@@ -78,15 +81,21 @@ app.get('/insert', async (req, res)=>{
   res.render("insert.ejs")
 })
 
-app.get('/update', async (req, res)=>{
-  let result = await client.db("johnny-db").collection("whatever").find({}).toArray()
-  res.render("update.ejs", {
-    postData: result
+app.post('/update/:id', async (req,res)=>{
+
+  console.log("req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("johnny-db").collection("whatever");
+  let result = await collection.findOneAndUpdate( 
+  {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
+  )
+  .then(result => {
+    console.log(result); 
+    res.redirect('/read');
   })
-  await client.connect();
-  //Insert
-  await client.db("johnny-db").collection("whatever").updateOne({post: "hardcoded post insert"}, {$set: {post: "Updated hardcoded post"}});
-  
+
 })
+
 
 app.listen(5000)

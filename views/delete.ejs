@@ -1,10 +1,10 @@
-<h1> update something into mongo</h1>
+<h1> delete something from mongo</h1>
 
 <h3> my blog posts</h3> 
  <% for (var i=0; i< postData.length; i++ ) { %>
-  <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
+  <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">  
     <%= postData[i].post %> 
-    <input type="submit" value="update"> 
+    <input type="submit" value="delete"> 
   </form>
   <br/>
 <% } %>

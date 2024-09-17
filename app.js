@@ -71,7 +71,6 @@ app.get('/read', async (req, res)=>{
   res.render('read.ejs', {
     postData : result
   });
-
 })
 
 app.get('/insert', async (req, res)=>{
@@ -94,7 +93,20 @@ app.post('/update/:id', async (req,res)=>{
     console.log(result); 
     res.redirect('/read');
   })
+})
 
+app.post('/delete/:id', async (req,res)=>{
+  console.log("req.parms.id: ", req.params.id)
+
+  client.connect; 
+  const collection = client.db("johnny-db").collection("whatever");
+  let result = await collection.findOneAndDelete( 
+  {"_id": new ObjectId(req.params.id)}
+  )
+  .then(result => {
+    console.log(result); 
+    res.redirect('/read');
+  })
 })
 
 

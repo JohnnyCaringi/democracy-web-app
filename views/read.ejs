@@ -1,16 +1,17 @@
 <h1>Mongo Results:</h1>
-<br>
 <a href="/">Back to homepage</a>
 <br>
 <a href="/insert">To insert</a>
 <br>
-<a href="/update">To update</a>
-<br>
+<hr>
 
 <% for (var i=0; i< postData.length; i++ ) { %>
     <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
       <%= postData[i].post %> 
       <input type="submit" value="update"> 
+    </form>
+    <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">  
+      <input type="submit" value="delete"> 
     </form>
     <br/>
   <% } %>

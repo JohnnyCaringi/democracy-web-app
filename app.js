@@ -73,6 +73,7 @@ app.get('/read', async (req, res)=>{
 app.get('/insert', async (req, res)=>{
   await client.connect();
   await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
+  res.render("insert.ejs")
 })
 
 app.post('/update/:id', async (req,res)=>{

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@500&family=Space+Mono&display=swap');
+
+header{
+  background-color:#592B8A;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+footer{
+  background-color:#0023ff;
+  color:#1131ff;
+  text-align: left;
+  font-size: 10px;
+}
+
+p{
+  font-family: 'Roboto', sans-serif;
+}
+
+a{
+  font-family: 'Roboto', sans-serif;
+  color: #ffd174;
+  vertical-align: bottom;
+}
+
+body{
+    background: #ffeac0;
+}
+
+input{
+  font-family: 'Roboto', sans-serif;
+  height: 40px;
+  border-radius: 1%;
+  border: 1px solid #d5d5d5;
+  background-color:#592B8A;
+  color: #FFB92A;
+}
+
+input:hover{
+    font-family: 'Roboto', sans-serif;
+    height: 40px;
+    border-radius: 1%;
+    border: 1px solid #d5d5d5;
+    background-color:#592B8A;
+    color: #ffde9d;
+  }
+
+textarea{
+  font-family: 'Roboto', sans-serif;
+}
+
+select{
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  border: none;
+  height: 40px;
+  width: 220px;
+  border: 1px solid #d5d5d5;
+  color: rgb(130, 117, 125);
+}
+
+a:visited {
+  color: #FFB92A;
+}
+
+a:hover {
+  color: #ffde9d;
+}
+
+a:active {
+  color: #FFB92A;
+}
+
+input:checked {
+  border: 3px solid #0023ff;
+}
+
+input[type="radio"]{
+  appearance: none;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(168, 166, 176);
+}
+
+.card{
+  max-width: 1000px;
+  padding: 1%;
+  background-color:#e7e7e7;
+}
+
+.card-title{
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #d5d5d5;
+  width: 80%;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[type="checkbox"] {
+  accent-color: #0023ff;
+}

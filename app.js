@@ -44,13 +44,10 @@ app.get('/mongo', async(req, res)=>{
   res.render("mongo.ejs", {
     query: result
   })
-  console.log("Sent result to browser")
 })
 
 
 app.get('/', function (req, res) {
-  //outdated way
-  //res.send('Hello Node From Express on local devbox :))))')
   res.sendFile(__dirname + '/index.html')
   res.sendFile(__dirname + '/styles/style.css')
   res.sendFile(__dirname + '/scripts/script.js')
@@ -75,9 +72,7 @@ app.get('/read', async (req, res)=>{
 
 app.get('/insert', async (req, res)=>{
   await client.connect();
-  //Insert
   await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
-  res.render("insert.ejs")
 })
 
 app.post('/update/:id', async (req,res)=>{
@@ -90,7 +85,6 @@ app.post('/update/:id', async (req,res)=>{
   {"_id": new ObjectId(req.params.id)}, { $set: {"post": "NEW POST" } }
   )
   .then(result => {
-    console.log(result); 
     res.redirect('/read');
   })
 })
@@ -104,7 +98,6 @@ app.post('/delete/:id', async (req,res)=>{
   {"_id": new ObjectId(req.params.id)}
   )
   .then(result => {
-    console.log(result); 
     res.redirect('/read');
   })
 })

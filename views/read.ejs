@@ -1,17 +1,34 @@
-<h1>Mongo Results:</h1>
-<a href="/">Back to homepage</a>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'><link rel="stylesheet" href="styles/ejsStyle.css">
+<header>
+  <h1>Mongo Results:</h1>
+  <hr>
+  <a href="/">Back to homepage</a>
+  <br>
+  <a href="/insert">To insert</a>
+  <hr>
+</header>
 <br>
-<a href="/insert">To insert</a>
-<br>
-<hr>
 
-<% for (var i=0; i< postData.length; i++ ) { %>
-    <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
-      <%= postData[i].post %> 
-      <input type="submit" value="update"> 
-    </form>
-    <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">  
-      <input type="submit" value="delete"> 
-    </form>
+<p>
+  <% for (var i=0; i< postData.length; i++ ) { %>
+    <%if (i%2 === 0){%>
+      <div class="row">
+    <%}%>
+    <div class="card container-fluid col-5">
+      <p><%= postData[i].post %></p>
+      <div class="display:grid">
+        <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block;">  
+          <input type="submit" value="update"> 
+        </form>
+        <form method="POST" action="/delete/<%= postData[i]._id %>" style="display: inline-block">  
+          <input type="submit" value="delete"> 
+        </form>
+      </div>
+    </div>
+    <%if (i%2!=0){%>
+      </div>
+    <%}%>
     <br/>
   <% } %>
+</p>

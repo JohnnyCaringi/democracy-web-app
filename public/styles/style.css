@@ -50,31 +50,39 @@ a:hover {
 .option1{
     height: 30px;
     background-color:#ff0050;
+    color: rgb(20, 20, 20);
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .option2{
     height: 30px;
     background-color:#00f2ea;
+    color: rgb(20, 20, 20);
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .text1{
     color:#ff0050;  
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .text2{
     color: #00f2ea;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .button1{
     color: white;
     background-color:#ff0050;
     border: none;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .button2{
     color: white;
     background-color:#00f2ea;
     border: none;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .delete{
@@ -82,6 +90,7 @@ a:hover {
     background-color:#aeafaf;
     border: none;
     width: 50px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .new{
@@ -89,4 +98,5 @@ a:hover {
     background-color:rgb(20, 20, 20);
     color: white;
     width: 80%;
+    font-family: 'Josefin Sans', sans-serif;
 }

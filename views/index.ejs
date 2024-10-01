@@ -1,15 +1,93 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'><link rel="stylesheet" href="styles/ejsStyle.css">
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Democracy</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'><link rel="stylesheet" href="styles/style.css">
+    </head>
 
-<header>
-    <h1>Welcome to ejs land</h1>
-    <a href="/">Back to homepage</a>
-    <br>
-    <a href="/read">To read</a>
-    <br>
-    <a href="/insert">To insert</a>
-</header>
-<br>
-<p>
-    <%=myServerVariable %>
-</p>
+    <body>
+        <header>
+            <img id="logo" src="media/logo.png" class="img-responsive center-block">
+            <hr>
+        </header>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <input type="submit" value="New Question" class="col new text-center">
+            <div class="col-4"></div>
+        </div>
+
+        <br>
+        <br>
+
+        <% for (var i=0; i< postData.length; i++) { %>
+            <%
+            var totalVotes = Number(postData[i].votes1) + Number(postData[i].votes2);
+            if (postData[i].votes1 == 0 && postData[i].votes2 == 0){
+                var barSize1 = 50;
+                var barSize2 = 50;
+            }
+            else{
+                var barSize1 = (postData[i].votes1 / totalVotes) * 100;
+                var barSize2 = (postData[i].votes2 / totalVotes) * 100;
+            }
+
+            if (barSize1 < 5){
+                var barSize1 = 5;
+                var barSize2 = 95;
+            }
+            else if (barSize2 < 5){
+                var barSize1 = 95;
+                var barSize2 = 5;
+            }
+            %>
+            <%if (i%2 === 0){%>
+            <div class="row">
+            <%}%>
+                <div class="card container-fluid col-sm text-center">
+                    <div class="row text-center">
+                        <h3 class="col text1"><%=postData[i].option1%></h2>
+                        <h4 class="col">or</h3>
+                        <h3 class="col text2"><%=postData[i].option2%></h2>
+                    </div>
+                    <div class="row">
+                        <div class="option1 text-center" style="width: <%=barSize1%>%"><%=postData[i].votes1%></div>
+                        <div class="option2 text-center " style="width: <%=barSize2%>%"><%=postData[i].votes2%></div>
+                        <hr>
+                        <form method="POST" action="/update1/<%= postData[i]._id %>" class="col">  
+                            <input type="submit" value="Option 1" class="button1">
+                        </form>
+                        <div class="col-4"></div>
+                        <form method="POST" action="/update2/<%= postData[i]._id %>" class="col">  
+                            <input type="submit" value="Option 2" class="button2">
+                        </form>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <form method="POST" action="/delete/<%= postData[i]._id %>" class="text-center col">  
+                            <input type="submit" value="Delete" class="delete"> 
+                          </form>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+
+            <%if (i%2!=0){%>
+            </div>
+            <hr>
+            <%}%>
+        <%}%>
+
+
+        <footer>
+            <hr>
+            <a href="https://github.com/JohnnyCaringi/cautious-doodle-dev" target="_blank">Visit Repo</a>
+        </footer>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script><script  src="scripts/script.js"></script>
+    </body>
+
+</html>

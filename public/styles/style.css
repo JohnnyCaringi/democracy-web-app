@@ -76,6 +76,7 @@ a:hover {
     background-color:#ff0050;
     border: none;
     font-family: 'Josefin Sans', sans-serif;
+    min-width: 100px;
 }
 
 .button2{
@@ -83,13 +84,14 @@ a:hover {
     background-color:#00f2ea;
     border: none;
     font-family: 'Josefin Sans', sans-serif;
+    min-width: 100px;
 }
 
 .delete{
     color: white;
     background-color:#aeafaf;
     border: none;
-    width: 50px;
+    min-width: 100px;
     font-family: 'Josefin Sans', sans-serif;
 }
 

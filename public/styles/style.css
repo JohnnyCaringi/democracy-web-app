@@ -95,10 +95,16 @@ a:hover {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.new{
+#ex1{
+    color: white;
+    background-color:rgb(20, 20, 20);
+    height: 50%;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#insertButton{
     border-color: white;
     background-color:rgb(20, 20, 20);
     color: white;
-    width: 80%;
     font-family: 'Josefin Sans', sans-serif;
 }

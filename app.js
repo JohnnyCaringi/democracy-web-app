@@ -6,6 +6,8 @@ const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
+const PORT = process.env.PORT || 3000;
+
 app.set('view engine', 'ejs')
 console.log("I'm on a node server")
 
@@ -56,6 +58,23 @@ app.get('/', async (req, res)=>{
   res.render('index.ejs', {
     postData : result
   });
+})
+
+app.get('/insert', async (req, res)=>{
+  client.connect; 
+  const collection = client.db("johnny-db").collection("democracy");
+  
+  let result = await collection.insertOne(
+    {
+      option1: req.query.option1,
+      option2: req.query.option2,
+      votes1: 0,
+      votes2: 0
+    }
+  )
+    .then(result => {
+      res.redirect('/');
+    })
 })
 
 app.post('/update1/:id', async (req,res)=>{
@@ -124,10 +143,10 @@ app.get('/read', async (req, res)=>{
   });
 })
 
-app.get('/insert', async (req, res)=>{
+app.get('/insertejs', async (req, res)=>{
   await client.connect();
   await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
-  res.render("insert.ejs")
+  res.render("insertejs.ejs")
 })
 
 app.post('/updateejs/:id', async (req,res)=>{
@@ -158,4 +177,4 @@ app.post('/deleteejs/:id', async (req,res)=>{
 })
 
 
-app.listen(5000)
+app.listen(PORT);

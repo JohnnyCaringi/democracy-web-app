@@ -6,8 +6,6 @@ const { urlencoded } = require('body-parser')
 const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const PORT = process.env.PORT || 3000;
-
 app.set('view engine', 'ejs')
 console.log("I'm on a node server")
 
@@ -49,85 +47,14 @@ app.get('/mongo', async(req, res)=>{
 })
 
 
-app.get('/', async (req, res)=>{
-  await client.connect();
-  
-  let result = await client.db("johnny-db").collection("democracy")
-    .find({}).toArray(); 
-
-  res.render('index.ejs', {
-    postData : result
-  });
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html')
+  res.sendFile(__dirname + '/styles/style.css')
+  res.sendFile(__dirname + '/scripts/script.js')
 })
-
-app.get('/insert', async (req, res)=>{
-  client.connect; 
-  const collection = client.db("johnny-db").collection("democracy");
-  
-  let result = await collection.insertOne(
-    {
-      option1: req.query.option1,
-      option2: req.query.option2,
-      votes1: 0,
-      votes2: 0
-    }
-  )
-    .then(result => {
-      res.redirect('/');
-    })
-})
-
-app.post('/update1/:id', async (req,res)=>{
-  client.connect; 
-  const collection = client.db("johnny-db").collection("democracy");
-
-  let currentVotes = await collection.findOne( 
-    {"_id": new ObjectId(req.params.id)});
-
-  let result = await collection.findOneAndUpdate( 
-  {"_id": new ObjectId(req.params.id)}, { $set: {"votes1": Number(currentVotes.votes1) + 1 } }
-  )
-  .then(result => {
-    res.redirect('/');
-  })
-
-})
-
-app.post('/update2/:id', async (req,res)=>{
-  client.connect; 
-  const collection = client.db("johnny-db").collection("democracy");
-
-  let currentVotes = await collection.findOne( 
-    {"_id": new ObjectId(req.params.id)});
-
-  let result = await collection.findOneAndUpdate( 
-  {"_id": new ObjectId(req.params.id)}, { $set: {"votes2": Number(currentVotes.votes2) + 1 } }
-  )
-  .then(result => {
-    res.redirect('/');
-  })
-
-})
-
-app.post('/delete/:id', async (req,res)=>{
-  console.log("req.parms.id: ", req.params.id)
-
-  client.connect; 
-  const collection = client.db("johnny-db").collection("democracy");
-  let result = await collection.findOneAndDelete( 
-  {"_id": new ObjectId(req.params.id)}
-  )
-  .then(result => {
-    res.redirect('/');
-  })
-})
-
-
-
-//old ejs stuff
 
 app.get('/ejs', (req, res)=>{
-    res.render("ejs", {
+    res.render("index", {
       myServerVariable: "Something from server"
     })
 })
@@ -143,13 +70,13 @@ app.get('/read', async (req, res)=>{
   });
 })
 
-app.get('/insertejs', async (req, res)=>{
+app.get('/insert', async (req, res)=>{
   await client.connect();
   await client.db("johnny-db").collection("whatever").insertOne({post: "hardcoded post insert"});
-  res.render("insertejs.ejs")
+  res.render("insert.ejs")
 })
 
-app.post('/updateejs/:id', async (req,res)=>{
+app.post('/update/:id', async (req,res)=>{
 
   console.log("req.parms.id: ", req.params.id)
 
@@ -163,7 +90,7 @@ app.post('/updateejs/:id', async (req,res)=>{
   })
 })
 
-app.post('/deleteejs/:id', async (req,res)=>{
+app.post('/delete/:id', async (req,res)=>{
   console.log("req.parms.id: ", req.params.id)
 
   client.connect; 
@@ -177,4 +104,4 @@ app.post('/deleteejs/:id', async (req,res)=>{
 })
 
 
-app.listen(PORT);
+app.listen(5000)

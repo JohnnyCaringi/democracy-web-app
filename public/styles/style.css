@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Maven+Pro&display=swap');
 
+html{
+    width: 1000px;
+    height: 1000px;
+  }
+
 body{
-    background-color: black;
+    background-image: url('https://i.imgur.com/fwI4agx.png');
 }
 
 header{
-    background-color: black;
+    background-color: #008ebd;
     padding: 10px;
 }
 
@@ -13,98 +18,45 @@ footer{
     text-align: center;
 }
 
-p{
+h1{
+    color:#ffffff;
+    text-align:center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h2{
+    color: #ecce41;
     font-family: 'Josefin Sans', sans-serif;
     background-color: #008ebd;
 }
 
 h4{
-    color: white;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-hr{
-    color: rgb(20, 20, 20);
+h5{
+    font-size: 15px;
+}
+
+input[type=submit]{
+    background-color:#ecce41;
+    color: black;
+    border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+p{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #008ebd;
 }
 
 a{
-    color: #ff0050;
-    font-family: 'Josefin Sans', sans-serif;
+    color: #ecce41;
 }
 
-a:hover {
-    color: #00f2ea;
-  }
-
 #logo{
-    height: 120px;
+    height: 80px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-.card{
-    background-color:rgb(20, 20, 20);
-    max-width: 600px;
-}
-
-.option1{
-    height: 30px;
-    background-color:#ff0050;
-    color: rgb(20, 20, 20);
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.option2{
-    height: 30px;
-    background-color:#00f2ea;
-    color: rgb(20, 20, 20);
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.text1{
-    color:#ff0050;  
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.text2{
-    color: #00f2ea;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.button1{
-    color: white;
-    background-color:#ff0050;
-    border: none;
-    font-family: 'Josefin Sans', sans-serif;
-    min-width: 100px;
-}
-
-.button2{
-    color: white;
-    background-color:#00f2ea;
-    border: none;
-    font-family: 'Josefin Sans', sans-serif;
-    min-width: 100px;
-}
-
-.delete{
-    color: white;
-    background-color:#aeafaf;
-    border: none;
-    min-width: 100px;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-#ex1{
-    color: white;
-    background-color:rgb(20, 20, 20);
-    height: 50%;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-#insertButton{
-    border-color: white;
-    background-color:rgb(20, 20, 20);
-    color: white;
-    font-family: 'Josefin Sans', sans-serif;
 }

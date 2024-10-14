@@ -7,6 +7,6 @@
   <li>Users can delete any questions (Please use this power responsibly)</li>
 </ul>
 
-<a href="https://cautious-doodle-dev.onrender.com/">Try it out!</a> 
-<a href="https://github.com/JohnnyCaringi/democracy-web-app">Repo</a> 
+<a href="https://cautious-doodle-dev.onrender.com/">Try it out!</a> |
+<a href="https://github.com/JohnnyCaringi/democracy-web-app">Repo</a> |
 <a href="https://github.com/JohnnyCaringi/democracy-web-app/pull/6">Example Issue</a> 

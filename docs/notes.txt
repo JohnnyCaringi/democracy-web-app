@@ -1,0 +1,36 @@
+--Johnny Caringi 10/15/2024 Web Dev Notes--
+
+--------------------------------------------------------------------------------------------------
+1. Notes
+--------------------------------------------------------------------------------------------------
+	- UNA faculty system with full CRUD and authentication (uses python)
+	- Ran on a Linux box that is ssh'd into
+	- Static IP - IP permanently assigned to you by your ISP
+	- NoIP - A DNS service
+	- Cool rock paper scissors game
+	- Firebase deployment tool
+	- Namecheap for url names
+	- Cloudzy for cloud services
+	- Windows servers are more resource intensive
+	- Windows provides their own web server (also works well with the purple visual studio)
+
+	TELL JOB INTERVIEWERS THAT YOU KNOW SYSTEMS TOO INSTEAD OF JUST PROGRAMMING
+
+--------------------------------------------------------------------------------------------------
+2. Concept (Giving my webpage a custom url)
+--------------------------------------------------------------------------------------------------
+	- Domain name services allow for your web app to have a custom url
+	- These web pages that give you custom URLs operate by telling DNS servers that
+	  your specific name goes to your IP address.
+	- The common person uses this by using a web interface and having the website do the
+  	  rest of the work
+	- Implementing this into my web app wouldn't change a whole ton because we already have
+	  a url. Though I might be able to get a prettier url even if it is a bit expensive.
+
+--------------------------------------------------------------------------------------------------
+3. Questions
+--------------------------------------------------------------------------------------------------
+	How do I pick a good URL name when the seemingly good ones are expensive?
+
+	What did you use to develop you rock paper scissors game?
+
